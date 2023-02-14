@@ -30,9 +30,23 @@ public class SimpleLinkedList {
         }
     }
 
+    public void deleteNode(Node pointer, int value){
+        if(root != null && root.getValue()==value){ // caso en el que el target es el root
+            root=pointer.getNext();
+        }
+        if (pointer != null && pointer.getNext()!=null) { // caso base, lista vacía o no se encontro el nodo
+            if(pointer.getNext().getValue()==value){ // se encontro el target en el siguiente
+                pointer.setNext(pointer.getNext().getNext());
+            } else { // se sigue buscando el target recursivamente
+                deleteNode(pointer.getNext(), value);
+            }
+        }
+    }
+
     public void getList(Node pointer){
         if(pointer!=null){
-            System.out.println(pointer.getValue());
+            System.out.print(pointer.getValue());
+            if(pointer.getNext()!=null) System.out.println(" -> "+pointer.getNext().getValue());
             getList(pointer.getNext());
         }
 
