@@ -38,6 +38,13 @@ public class DoubleLinkedList {
         }
     }
 
+    public Node findNode(Node pointer, int value){
+        if(pointer!=null && pointer.getValue()!=value){ // hace la recursion cuando no encunetra al nodo
+            findNode(pointer.getNext(),value);
+        }
+        return pointer; // null cuando no lo encuentra
+    }
+
     public void print(){
         print(head);
     }
