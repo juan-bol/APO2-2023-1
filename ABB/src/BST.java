@@ -29,17 +29,47 @@ public class BST {
 
     }
 
-    public void print(){
-        print(root);
+
+
+    public void inOrden(){
+        inOrden(root);
+        System.out.println();
     }
 
-    private void print(Node pointer){
-        if(pointer !=null){
-            print(pointer.getLeft());
-            System.out.println(pointer.getValue()+" ");
-            print(pointer.getRight());
+    private void inOrden(Node pointer){
+        if(pointer !=null) {
+            inOrden(pointer.getLeft());
+            System.out.print(pointer.getValue() + " ");
+            inOrden(pointer.getRight());
         }
     }
+
+    public void preOrden(){
+        preOrden(root);
+        System.out.println();
+    }
+
+    private void preOrden(Node pointer){
+        if(pointer !=null) {
+            System.out.print(pointer.getValue() + " ");
+            preOrden(pointer.getLeft());
+            preOrden(pointer.getRight());
+        }
+    }
+
+    public void postOrden(){
+        postOrden(root);
+        System.out.println();
+    }
+
+    private void postOrden(Node pointer){
+        if(pointer !=null){
+            postOrden(pointer.getLeft());
+            postOrden(pointer.getRight());
+            System.out.print(pointer.getValue()+" ");
+        }
+    }
+
 
 
 }
