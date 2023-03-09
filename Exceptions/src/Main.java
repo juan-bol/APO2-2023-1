@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,9 +15,23 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        askForAge();
+//        askForAge();
+
+        readFile();
 
 
+    }
+
+    private static void readFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("c:\\Users\\1144102780\\Desktop\\file.tx"));
+            String line;
+            while ((line=br.readLine())!=null){
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     private static void askForAge(){
@@ -59,7 +77,7 @@ public class Main {
                 System.out.println("Ingrese el denominador");
                 int b = Integer.parseInt(scanner.nextLine());
                 System.out.println("Resultado: "+dividir(a,b));
-                flag=false;
+                flag=false; // Si el metodo de dividir falla, esta linea no se ejecuta
             } catch (NumberFormatException exception){
                 System.out.println(exception);
                 System.out.println("Ingrese enteros validos para la division");
